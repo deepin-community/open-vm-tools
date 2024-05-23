@@ -1,0 +1,11 @@
+
+--- open-vm-tools-12.4.0.orig/open-vm-tools/vmware-user-suid-wrapper/vmware-user.desktop.in
++++ open-vm-tools-12.4.0/open-vm-tools/vmware-user-suid-wrapper/vmware-user.desktop.in
+@@ -4,6 +4,6 @@ Encoding=UTF-8
+ Exec=_bindir_/vmware-user-suid-wrapper
+ Name=VMware User Agent
+ # KDE bug 190522: KDE does not autostart items with NoDisplay=true...
+-# NoDisplay=true
++NoDisplay=true
+ X-KDE-autostart-phase=1
+ 

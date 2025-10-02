@@ -1,5 +1,6 @@
 /*********************************************************
- * Copyright (c) 2007-2023 VMware, Inc. All rights reserved.
+ * Copyright (c) 2007-2025 Broadcom. All Rights Reserved.
+ * The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -590,9 +591,9 @@ static VixError VixToolsPrintProcInfoEx(DynBuf *dstBuffer,
                                         const char *name,
                                         uint64 pid,
                                         const char *user,
-                                        int start,
+                                        time_t start,
                                         int exitCode,
-                                        int exitTime);
+                                        time_t exitTime);
 
 static VixError VixToolsListDirectory(VixCommandRequestHeader *requestMsg,
                                       size_t maxBufferSize,
@@ -2640,6 +2641,65 @@ VixToolsTranslateVGAuthError(VGAuthError vgErr)
 
 
    return err;
+}
+#endif
+
+
+#if defined(_WIN32)
+/*
+ *-----------------------------------------------------------------------------
+ *
+ * VixTools_ConfigGetString --
+ *
+ *    Wrapper for VMTools_ConfigGetString to retrieve values
+ *    from VIX_TOOLS_CONFIG_API_GROUPNAME group.
+ *
+ * Return value:
+ *    Value of the key if the value was read successfully, or else
+ *    a copy of defValue unless defValue is NULL, in which case it's NULL.
+ *    The returned string should be freed with g_free when no longer
+ *    needed.
+ *
+ * Side effects:
+ *    None
+ *
+ *-----------------------------------------------------------------------------
+ */
+gchar *
+VixTools_ConfigGetString(const gchar *key,         // IN
+                         const gchar *defValue)    // In
+{
+
+   return VMTools_ConfigGetString(gConfDictRef,
+                                  VIX_TOOLS_CONFIG_API_GROUPNAME,
+                                  key, defValue);
+}
+
+
+/*
+ *-----------------------------------------------------------------------------
+ *
+ * VixTools_ConfigLogInvalidString --
+ *
+ *    Log a warning when a config string from the
+ *    VIX_TOOLS_CONFIG_API_GROUPNAME group has an invalid value.
+ *
+ * Return value:
+ *    None
+ *
+ * Side effects:
+ *    None
+ *
+ *-----------------------------------------------------------------------------
+ */
+void
+VixTools_ConfigLogInvalidString(const gchar *function,    // IN
+                                const gchar *key,         // IN
+                                const gchar *confValue,   // IN
+                                const gchar *usedValue)   // IN
+{
+   g_warning("%s: invalid value '%s' from tools.conf [%s] %s, using %s.\n",
+             function, confValue, VIX_TOOLS_CONFIG_API_GROUPNAME, key, usedValue);
 }
 #endif
 
@@ -5383,13 +5443,13 @@ VixToolsListProcesses(VixCommandRequestHeader *requestMsg, // IN
                                     "<debugged>%d</debugged>"
 #endif
                                     "<user>%s</user>"
-                                    "<start>%d</start>"
+                                    "<start>%"FMT64"d</start>"
                                     "</proc>",
                                     cmdNamePtr, name, (int) procInfo->procId,
 #if defined(_WIN32)
                                     (int) procInfo->procDebugged,
 #endif
-                                    user, (int) procInfo->procStartTime);
+                                    user, (int64) procInfo->procStartTime);
       if (NULL == procBufPtr) {
          err = VIX_E_OUT_OF_MEMORY;
          goto quit;
@@ -5552,9 +5612,9 @@ VixToolsListProcessesExGenerateData(uint32 numPids,          // IN
                                              spList->fullCommandLine,
                                              spList->pid,
                                              spList->user,
-                                             (int) spList->startTime,
+                                             spList->startTime,
                                              spList->exitCode,
-                                             (int) spList->endTime);
+                                             spList->endTime);
                if (VIX_OK != err) {
                   goto quit;
                }
@@ -5572,9 +5632,9 @@ VixToolsListProcessesExGenerateData(uint32 numPids,          // IN
                                        spList->fullCommandLine,
                                        spList->pid,
                                        spList->user,
-                                       (int) spList->startTime,
+                                       spList->startTime,
                                        spList->exitCode,
-                                       (int) spList->endTime);
+                                       spList->endTime);
          if (VIX_OK != err) {
             goto quit;
          }
@@ -5648,7 +5708,7 @@ VixToolsListProcessesExGenerateData(uint32 numPids,          // IN
                                              procInfo->procId,
                                              (NULL == procInfo->procOwner)
                                              ? "" : procInfo->procOwner,
-                                             (int) procInfo->procStartTime,
+                                             procInfo->procStartTime,
                                              0, 0);
                if (VIX_OK != err) {
                   goto quit;
@@ -5669,7 +5729,7 @@ VixToolsListProcessesExGenerateData(uint32 numPids,          // IN
                                        procInfo->procId,
                                        (NULL == procInfo->procOwner)
                                        ? "" : procInfo->procOwner,
-                                       (int) procInfo->procStartTime,
+                                       procInfo->procStartTime,
                                        0, 0);
          if (VIX_OK != err) {
             goto quit;
@@ -5996,9 +6056,9 @@ VixToolsPrintProcInfoEx(DynBuf *dstBuffer,             // IN/OUT
                         const char *name,              // IN
                         uint64 pid,                    // IN
                         const char *user,              // IN
-                        int start,                     // IN
+                        time_t start,                  // IN
                         int exitCode,                  // IN
-                        int exitTime)                  // IN
+                        time_t exitTime)               // IN
 {
    VixError err;
    char *escapedName = NULL;
@@ -6038,12 +6098,12 @@ VixToolsPrintProcInfoEx(DynBuf *dstBuffer,             // IN/OUT
                                     "<name>%s</name>"
                                     "<pid>%"FMT64"d</pid>"
                                     "<user>%s</user>"
-                                    "<start>%d</start>"
+                                    "<start>%"FMT64"d</start>"
                                     "<eCode>%d</eCode>"
-                                    "<eTime>%d</eTime>"
+                                    "<eTime>%"FMT64"d</eTime>"
                                     "</proc>",
                                     cmdNamePtr, escapedName, pid, escapedUser,
-                                    start, exitCode, exitTime);
+                                    (int64) start, exitCode, (int64) exitTime);
    if (NULL == procInfoEntry) {
       err = VIX_E_OUT_OF_MEMORY;
       goto quit;
@@ -11749,7 +11809,7 @@ GuestAuthEnabled(void)
  *      the GuestAuth library.
  *
  * Results:
- *      VIX_OK if successful.Other VixError code otherwise.
+ *      VIX_OK if successful, otherwise some other VixError code.
  *
  * Side effects:
  *      Current process impersonates.
@@ -11773,10 +11833,6 @@ GuestAuthPasswordAuthenticateImpersonate(
    VGAuthExtraParams extraParams[1];
    Bool impersonated = FALSE;
 
-   extraParams[0].name = VGAUTH_PARAM_LOAD_USER_PROFILE;
-   extraParams[0].value = loadUserProfile ? VGAUTH_PARAM_VALUE_TRUE :
-                                            VGAUTH_PARAM_VALUE_FALSE;
-
    err = VixMsg_DeObfuscateNamePassword(obfuscatedNamePassword,
                                         &username,
                                         &password);
@@ -11792,13 +11848,21 @@ GuestAuthPasswordAuthenticateImpersonate(
       goto done;
    }
 
+#ifdef _WIN32
+   vgErr = VGAuth_ValidateUsernamePassword_Helper(ctx, username, password,
+                                                  &newHandle);
+#else
    vgErr = VGAuth_ValidateUsernamePassword(ctx, username, password,
-                                           0, NULL,
-                                           &newHandle);
+                                           0, NULL, &newHandle);
+#endif
    if (VGAUTH_FAILED(vgErr)) {
       err = VixToolsTranslateVGAuthError(vgErr);
       goto done;
    }
+
+   extraParams[0].name = VGAUTH_PARAM_LOAD_USER_PROFILE;
+   extraParams[0].value = loadUserProfile ? VGAUTH_PARAM_VALUE_TRUE :
+                                            VGAUTH_PARAM_VALUE_FALSE;
 
    vgErr = VGAuth_Impersonate(ctx, newHandle,
                               (int)ARRAYSIZE(extraParams),
@@ -11858,7 +11922,7 @@ done:
  *      the GuestAuth library.
  *
  * Results:
- *      VIX_OK if successful.  Other VixError code otherwise.
+ *      VIX_OK if successful, otherwise some other VixError code.
  *
  * Side effects:
  *      Current process impersonates.

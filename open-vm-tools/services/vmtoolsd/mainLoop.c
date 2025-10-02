@@ -1,5 +1,6 @@
 /*********************************************************
- * Copyright (c) 2008-2023 VMware, Inc. All rights reserved.
+ * Copyright (c) 2008-2024 Broadcom. All Rights Reserved.
+ * The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -49,6 +50,7 @@
     (defined(__linux__) && !defined(USERWORLD))
 #  include "vmware/tools/guestStore.h"
 #  include "globalConfig.h"
+
 #endif
 
 /*
@@ -118,6 +120,13 @@ static gboolean gGlobalConfStarted = FALSE;
 static void
 ToolsCoreCleanup(ToolsServiceState *state)
 {
+   g_info("%s: Entering\n", __FUNCTION__);
+   /*
+    * Emit the early shutdown signal.
+    */
+   g_signal_emit_by_name(state->ctx.serviceObj,
+                         TOOLS_CORE_SIG_PRE_SHUTDOWN,
+                         &state->ctx);
 #if (defined(_WIN32) && !defined(_ARM64_)) || \
     (defined(__linux__) && !defined(USERWORLD))
    if (state->mainService) {
@@ -126,6 +135,7 @@ ToolsCoreCleanup(ToolsServiceState *state)
        * blocked in client lib synchronous recv() call.
        */
       ToolsPluginSvcGuestStore_Shutdown(&state->ctx);
+
    }
 #endif
 
@@ -1216,6 +1226,7 @@ ToolsCore_Setup(ToolsServiceState *state)
    ToolsCoreService_RegisterProperty(state->ctx.serviceObj,
                                      &ctxProp);
    g_object_set(state->ctx.serviceObj, TOOLS_CORE_PROP_CTX, &state->ctx, NULL);
+
    /* Initialize the environment from config. */
    ToolsCoreInitEnv(&state->ctx);
    ToolsCorePool_Init(&state->ctx);

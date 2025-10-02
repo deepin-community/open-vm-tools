@@ -1,5 +1,6 @@
 /*********************************************************
- * Copyright (c) 2002-2023 VMware, Inc. All rights reserved.
+ * Copyright (c) 2002-2025 Broadcom. All Rights Reserved.
+ * The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -697,7 +698,7 @@
 #define CONFGROUPNAME_AMSI "giamsi"
 
 /* Default state of AMSI config*/
-#define VSEP_DEFAULT_AMSI_STATE FALSE
+#define VSEP_DEFAULT_AMSI_STATE TRUE
 
 /**
  * Defines user-defined maximum AMSI client connections.
@@ -810,6 +811,30 @@
  * Enable (or disable) the TimeInfo API.
  */
 #define CONFNAME_TIMESYNC_TIMEINFO_ENABLED "timeInfo.enabled"
+
+/**
+ * Defines the configuration to perform all time synchronization or not.
+ *
+ * @note Illegal values result in a @c g_warning and fallback to the default
+ * value.
+ *
+ * @param boolean If TRUE, all time synchronization is disabled.
+ *                If FALSE, one-time synchronization is enabled and periodic
+ *                synchronization is controlled by disable-periodic.
+ */
+#define CONFNAME_TIMESYNC_DISABLE_ALL "disable-all"
+
+/**
+ * Defines the configuration to perform periodic time synchronization or not.
+ *
+ * @note Illegal values result in a @c g_warning and fallback to the default
+ * value.
+ *
+ * @param boolean If TRUE, periodic time synchronization is disabled.
+ *                If FALSE, periodic time synchronization is enabled if
+ *                disable-all is also FALSE.
+ */
+#define CONFNAME_TIMESYNC_DISABLE_PERIODIC "disable-periodic"
 
 /*
  * END timeSync goodies.

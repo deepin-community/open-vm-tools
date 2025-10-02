@@ -1,5 +1,6 @@
 /*********************************************************
- * Copyright (c) 1998-2023 VMware, Inc. All rights reserved.
+ * Copyright (c) 1998-2024 Broadcom. All rights reserved.
+ * The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -267,7 +268,6 @@
    LOGLEVEL_VAR(tpm2emu), \
    LOGLEVEL_VAR(tpm2Verification), \
    LOGLEVEL_VAR(txt), \
-   LOGLEVEL_VAR(udpfec),    /* lib/udpfec */ \
    LOGLEVEL_VAR(uhci), \
    LOGLEVEL_VAR(undopoint), \
    LOGLEVEL_VAR(unityMsg),  /* mks/remote/vdpUnityVmdb */ \
@@ -342,6 +342,7 @@
    LOGLEVEL_VAR(wifi), /* macWireless and wpa_supplicant */ \
    LOGLEVEL_VAR(win32util), \
    LOGLEVEL_VAR(worker), \
+   LOGLEVEL_VAR(xled), \
    LOGLEVEL_VAR(xpmode)
 
    /* end of list */

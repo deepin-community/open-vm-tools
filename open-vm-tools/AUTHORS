@@ -94,3 +94,15 @@ Jan Engelhardt  Fix build problems with grpc (at least) 1.54
 
 Yun Zheng Hu    Power Ops: Attempt to execute file path only
                 - https://github.com/vmware/open-vm-tools/pull/689
+
+Joseph Allen    Updated NetworkManager calls in suspend/resume scripts
+                - https://github.com/vmware/open-vm-tools/pull/699
+
+Brennan Kinney  Revise settings for vmware-user.desktop
+                - https://github.com/vmware/open-vm-tools/pull/668
+
+Rudy Heitbaum   Fix build when compiling with -std=c23
+                - https://github.com/vmware/open-vm-tools/pull/751
+
+James Le Cuirot  Fix xmlsec detection when cross-compiling with pkg-config
+                 - https://github.com/vmware/open-vm-tools/pull/732

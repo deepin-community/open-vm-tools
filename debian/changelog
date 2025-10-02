@@ -1,8 +1,57 @@
-open-vm-tools (2:12.4.0-1deepin1) unstable; urgency=medium
+open-vm-tools (2:13.0.5-1) unstable; urgency=high
 
-  * add vmware-user.desktop NoDisplay.
+  * [63d2ebe] Remove Build-dep on libgdk-pixbuf-xlib-2.0-dev.
+    Thanks to Simon McVittie (Closes: #1112399)
+  * [various commits] add a debdiff job to the gitlab ci
+  * [9847515] New upstream version 13.0.5 (CVE-2025-41244)
 
- -- LiChengGang <lichenggang@uniontech.com>  Thu, 23 May 2024 13:51:27 +0800
+ -- Bernd Zeimetz <bzed@debian.org>  Tue, 30 Sep 2025 20:10:06 +0200
+
+open-vm-tools (2:13.0.0-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Bernd Zeimetz <bzed@debian.org>  Mon, 18 Aug 2025 10:49:22 +0200
+
+open-vm-tools (2:13.0.0-1) experimental; urgency=medium
+
+  * [6e2779c] Refreshing patches.
+    Dropping patches applied upstream
+  * [209b17e] Add libcrypt-dev to Build-Depends. (Closes: #1106954)
+  * [2f26698] New upstream version 13.0.0
+
+ -- Bernd Zeimetz <bzed@debian.org>  Tue, 24 Jun 2025 18:06:37 +0200
+
+open-vm-tools (2:12.5.0-2) unstable; urgency=high
+
+  * [910f279] Fixing an insecure file handling vulnerability.
+    It allowed a malicious actor with non-administrative privileges
+    on a guest VM to tamper the local files to trigger insecure file
+    operations within that VM.
+    VMSA-2025-0007
+    CVE-2025-22247 (Closes: #1105159)
+
+ -- Bernd Zeimetz <bzed@debian.org>  Mon, 12 May 2025 15:17:50 +0200
+
+open-vm-tools (2:12.5.0-1) unstable; urgency=medium
+
+  * Update to 12.5.0, full release notes can be found at
+    https://github.com/vmware/open-vm-tools/blob/stable-12.5.0/ReleaseNotes.md
+    - d/copyright: update to 12.5.0
+    - d/copyright: add missing path element to fix superfluous-file-pattern
+    - d/copyright: bsd files gone since 10.2.5
+    - d/*.lintian-overrides: fix paths
+
+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Tue, 07 Jan 2025 11:42:40 +0100
+
+open-vm-tools (2:12.4.5-1) unstable; urgency=medium
+
+  * [f971632] Remove vmxnet.hook.
+    Not used/installed anymore since 2018. (Closes: #1074238)
+  * [113ef20] Add dh-sequence-movetousr as Build-Dep (Closes: #1073673)
+  * [86d484c] New upstream version 12.4.5 (Closes: #1074436)
+
+ -- Bernd Zeimetz <bzed@debian.org>  Fri, 12 Jul 2024 22:31:45 +0200
 
 open-vm-tools (2:12.4.0-1) unstable; urgency=medium
 

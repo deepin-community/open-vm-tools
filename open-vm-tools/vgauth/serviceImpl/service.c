@@ -1,5 +1,6 @@
 /*********************************************************
- * Copyright (C) 2011-2016,2019 VMware, Inc. All rights reserved.
+ * Copyright (c) 2011-2025 Broadcom. All Rights Reserved.
+ * The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -28,6 +29,7 @@
 #include "VGAuthUtil.h"
 #ifdef _WIN32
 #include "winUtil.h"
+#include <glib.h>
 #endif
 
 static ServiceStartListeningForIOFunc startListeningIOFunc = NULL;
@@ -283,9 +285,27 @@ static gchar *
 ServiceUserNameToPipeName(const char *userName)
 {
    gchar *escapedName = ServiceEncodeUserName(userName);
+#ifdef _WIN32
+   gchar *uuidStr = g_uuid_string_random();
+   /*
+    * Add a unique suffix to avoid a name collision with an existing named pipe
+    * created by someone else (intentionally or by accident).
+    * This is not needed for Linux; name collisions on sockets are already
+    * avoided there since (1) file system paths to VGAuthService sockets are in
+    * a directory that is writable only by root and (2) VGAuthService unlinks a
+    * socket path before binding it to a newly created socket.
+    */
+   gchar *pipeName = g_strdup_printf("%s-%s-%s",
+                                     SERVICE_PUBLIC_PIPE_NAME,
+                                     escapedName,
+                                     uuidStr);
+
+   g_free(uuidStr);
+#else
    gchar *pipeName = g_strdup_printf("%s-%s",
                                      SERVICE_PUBLIC_PIPE_NAME,
                                      escapedName);
+#endif
 
    g_free(escapedName);
    return pipeName;

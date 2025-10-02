@@ -1,5 +1,6 @@
 /*********************************************************
- * Copyright (c) 2008-2021,2023 VMware, Inc. All rights reserved.
+ * Copyright (c) 2008-2021,2023-2024 Broadcom. All rights reserved.
+ * The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -67,7 +68,7 @@ ToolsCoreRunCommand(const gchar *option,
    VMTools_AttachConsole();
 #endif
    if (VmCheck_IsVirtualWorld()) {
-      char *result = NULL;
+      char *result;
       Bool status = RpcChannel_SendOne(&result, NULL, "%s", value);
 
       if (!status) {
@@ -108,7 +109,7 @@ ToolsCoreRunCommandFromFile(const gchar *option,
    VMTools_AttachConsole();
 #endif
    if (VmCheck_IsVirtualWorld()) {
-      char *result = NULL;
+      char *result;
       Bool status;
       gchar *fileContents = NULL;
 

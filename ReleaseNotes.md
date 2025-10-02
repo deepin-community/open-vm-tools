@@ -1,8 +1,8 @@
-#                      open-vm-tools 12.4.0 Release Notes
+#                      open-vm-tools 13.0.5 Release Notes
 
-Updated on: 21 March 2024
+Updated on: 29 Sep 2025
 
-open-vm-tools | 21 MARCH 2024 | Build 23259341
+open-vm-tools | 29 SEP 2025 | Build 24915695
 
 Check back for additions and updates to these release notes.
 
@@ -11,7 +11,6 @@ Check back for additions and updates to these release notes.
 The release notes cover the following topics:
 
 * [What's New](#whatsnew) 
-* [End of Feature Support Notice](#endsupport)
 * [Internationalization](#i18n) 
 * [Guest Operating System Customization Support](#guestop) 
 * [Interoperability Matrix](#interop) 
@@ -20,57 +19,52 @@ The release notes cover the following topics:
 
 ## <a id="whatsnew" name="whatsnew"></a>What's New
 
+*   This release resolves [CVE-2025-41244](https://www.cve.org/CVERecord?id=CVE-2025-41244). For more information on this vulnerability and its impact on Broadcom products, see [VMSA-2025-0015](https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/36149).
+
+    A patch to address CVE-2025-41244 on earlier open-vm-tools releases is provided to the Linux community at [CVE-2025-41244.patch](https://github.com/vmware/open-vm-tools/tree/CVE-2025-41244.patch).
+
+*   Guest OS Customization has been updated to use "systemctl reboot", if available.
 
 *   Please see the [Resolved Issues](#resolvedissues) and [Known Issues](#knownissues) sections below.
 
-*   A complete list of the granular changes in the open-vm-tools 12.4.0 release is available at:
+*   A complete list of the granular changes in the open-vm-tools 13.0.5 release is available at:
 
-    [open-vm-tools ChangeLog](https://github.com/vmware/open-vm-tools/blob/stable-12.4.0/open-vm-tools/ChangeLog)
-
-## <a id="endsupport" name="endsupport"></a>End of Feature Support Notice
-
-*   Discontinued: Using "xml-security-c" and "xerces-c" to build the VMware Guest Authentication Service (VGAuth)
-
-    Starting with open-vm-tools 12.4.0, and going forward, the VGAuth service build will require the "xmlsec1" and "libxml2" development and runtime packages.  If still using the "xml-security-c" and "xerces-c" open source projects to build open-vm-tools, you must make the change now.  The open-vm-tools 12.3.x series will be the last version that can use "xml-security-c" and "xerces-c".
+    [open-vm-tools ChangeLog](https://github.com/vmware/open-vm-tools/blob/stable-13.0.5/open-vm-tools/ChangeLog)
 
 ## <a id="i18n" name="i18n"></a>Internationalization
 
-open-vm-tools 12.4.0 is available in the following languages:
+open-vm-tools 13.0.5 is available in the following languages:
 
 * English
 * French
-* German
-* Spanish
-* Italian
 * Japanese
-* Korean
-* Simplified Chinese
-* Traditional Chinese
+* Spanish
 
 ## <a id="guestop" name="guestop"></a>Guest Operating System Customization Support
 
-The [Guest OS Customization Support Matrix](http://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) provides details about the guest operating systems supported for customization.
+The [Guest OS Customization Support Matrix](https://compatibilityguide.broadcom.com/search?program=software&persona=live&customization=Guest+Customization&column=osVendors&order=asc) provides details about the guest operating systems supported for customization.
+
 
 ## <a id="interop" name="interop"></a>Interoperability Matrix
 
-The [VMware Product Interoperability Matrix](http://partnerweb.vmware.com/comp_guide2/sim/interop_matrix.php) provides details about the compatibility of current and earlier versions of VMware Products. 
+The [Broadcom Product Interoperability Matrix](https://interopmatrix.broadcom.com/Interoperability) provides details about the compatibility of current and earlier versions of VMware Products. 
 
 ## <a id="resolvedissues" name ="resolvedissues"></a> Resolved Issues
 
-*   **The following github.com/vmware/open-vm-tools pull request has been addressed**
+*   **This release resolves CVE-2025-41244.**
 
-    * Power Ops: Attempt to execute file path only
+    * For more information on this vulnerability and its impact on Broadcom products, see [VMSA-2025-0015](https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/36149).
 
-      [Pull request #689](https://github.com/vmware/open-vm-tools/pull/689)
+    * A patch to address CVE-2025-41244 on earlier open-vm-tools releases is provided to the Linux community at [CVE-2025-41244.patch](https://github.com/vmware/open-vm-tools/tree/CVE-2025-41244.patch).
 
-*   **A number of issues flagged by Coverity have been addressed.**
+*   **Guest OS Customization updated to use "systemctl reboot".**
 
-*   **Add aliasing code to identify Miracle Linux by its former name of "asianux".**
+    Currently the "telinit 6" command is used to reboot a Linux VM following Guest OS Customization.  As the classic Linux init system, SysVinit, is deprecated in favor of a newer init system, systemd, the telinit command may not be available on the base Linux OS.
 
-      The Asianux Linux distribution rebranded itself as Miracle Linux.  Since vSphere infrastructure recognizes "asianux" but not Miracle Linux, aliasing code was added to open-vm-tools to continue to identify Miracle Linux systems as "asianux".
+    This change adds support to Guest OS Customization for the systemd init system.  If the modern init system, systemd, is available, then a "systemctl reboot" command will be used to trigger reboot.  Otherwise, the "telinit 6" command will be used assuming the traditional init system, SysVinit, is still available.
+
 
 ## <a id="knownissues" name="knownissues"></a>Known Issues
-
 
 *   **Shared Folders mount is unavailable on Linux VM.**
 
@@ -84,4 +78,4 @@ The [VMware Product Interoperability Matrix](http://partnerweb.vmware.com/comp_
 
     <tt>vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</tt>
 
-    For more information on how to configure VMware Tools Shared Folders, see [KB 60262](https://kb.vmware.com/s/article/60262)
+    For more information on how to configure VMware Tools Shared Folders, see [KB 60262](https://knowledge.broadcom.com/external/article?legacyId=60262).

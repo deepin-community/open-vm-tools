@@ -1,3 +1,5 @@
 use-debian-pam
 debian/scsi-udev-rule
-fix-NoDisplay.patch
+0003-Validate-user-names-and-file-paths.patch
+0004-SDMP-Service-Discovery-Plugin.patch
+0005-fix-NoDisplay.patch

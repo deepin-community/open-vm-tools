@@ -1,3 +1,13 @@
+open-vm-tools (2:12.4.0-1deepin2) unstable; urgency=medium
+
+  * Security fixes:
+    - CVE-2025-22247
+      debian/patches/0003-Validate-user-names-and-file-paths.patch
+    - CVE-2025-41244
+      debian/patches/0004-SDMP-Service-Discovery-Plugin.patch
+
+ -- Tianyu Chen <sweetyfish@deepin.org>  Fri, 17 Apr 2026 16:57:16 +0800
+
 open-vm-tools (2:12.4.0-1deepin1) unstable; urgency=medium
 
   * add vmware-user.desktop NoDisplay.

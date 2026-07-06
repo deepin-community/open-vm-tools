@@ -1,8 +1,8 @@
-#                      open-vm-tools 12.4.0 Release Notes
+#                      open-vm-tools 12.5.0 Release Notes
 
-Updated on: 21 March 2024
+Updated on: 8 October 2024
 
-open-vm-tools | 21 MARCH 2024 | Build 23259341
+open-vm-tools | 8 OCTOBER 2024 | Build 24276846
 
 Check back for additions and updates to these release notes.
 
@@ -11,8 +11,8 @@ Check back for additions and updates to these release notes.
 The release notes cover the following topics:
 
 * [What's New](#whatsnew) 
-* [End of Feature Support Notice](#endsupport)
 * [Internationalization](#i18n) 
+* [Product Support Notice](#suppnote)
 * [Guest Operating System Customization Support](#guestop) 
 * [Interoperability Matrix](#interop) 
 * [Resolved Issues](#resolvedissues) 
@@ -23,19 +23,13 @@ The release notes cover the following topics:
 
 *   Please see the [Resolved Issues](#resolvedissues) and [Known Issues](#knownissues) sections below.
 
-*   A complete list of the granular changes in the open-vm-tools 12.4.0 release is available at:
+*   A complete list of the granular changes in the open-vm-tools 12.5.0 release is available at:
 
-    [open-vm-tools ChangeLog](https://github.com/vmware/open-vm-tools/blob/stable-12.4.0/open-vm-tools/ChangeLog)
-
-## <a id="endsupport" name="endsupport"></a>End of Feature Support Notice
-
-*   Discontinued: Using "xml-security-c" and "xerces-c" to build the VMware Guest Authentication Service (VGAuth)
-
-    Starting with open-vm-tools 12.4.0, and going forward, the VGAuth service build will require the "xmlsec1" and "libxml2" development and runtime packages.  If still using the "xml-security-c" and "xerces-c" open source projects to build open-vm-tools, you must make the change now.  The open-vm-tools 12.3.x series will be the last version that can use "xml-security-c" and "xerces-c".
+    [open-vm-tools ChangeLog](https://github.com/vmware/open-vm-tools/blob/stable-12.5.0/open-vm-tools/ChangeLog)
 
 ## <a id="i18n" name="i18n"></a>Internationalization
 
-open-vm-tools 12.4.0 is available in the following languages:
+open-vm-tools 12.5.0 is available in the following languages:
 
 * English
 * French
@@ -47,9 +41,29 @@ open-vm-tools 12.4.0 is available in the following languages:
 * Simplified Chinese
 * Traditional Chinese
 
+## <a id="suppnote" name="suppnote"></a>Product Support Notice
+
+Beginning with the next major release, we will be reducing the number of supported localization languages.  The three supported languages will be:
+  * Japanese
+  * Spanish
+  * French
+
+The following languages will no longer be supported:
+  * Italian
+  * German
+  * Brazilian Portuguese
+  * Traditional Chinese
+  * Korean
+  * Simplified Chinese
+
+Impact:
+  * Users who have been using the deprecated languages will no longer receive updates or support in these languages.
+  * All user interfaces, message catalogs, help documentation, and customer support will be available only in English or in the three supported languages mentioned above.
+
 ## <a id="guestop" name="guestop"></a>Guest Operating System Customization Support
 
 The [Guest OS Customization Support Matrix](http://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) provides details about the guest operating systems supported for customization.
+
 
 ## <a id="interop" name="interop"></a>Interoperability Matrix
 
@@ -57,20 +71,17 @@ The [VMware Product Interoperability Matrix](http://partnerweb.vmware.com/comp_
 
 ## <a id="resolvedissues" name ="resolvedissues"></a> Resolved Issues
 
-*   **The following github.com/vmware/open-vm-tools pull request has been addressed**
+*   **The following github.com/vmware/open-vm-tools pull request has been addressed.**
 
-    * Power Ops: Attempt to execute file path only
+    * Revise settings for vmware-user.desktop
 
-      [Pull request #689](https://github.com/vmware/open-vm-tools/pull/689)
+      [Pull request #668](https://github.com/vmware/open-vm-tools/pull/668)
 
-*   **A number of issues flagged by Coverity have been addressed.**
+*   **Accomodate newer releases of libxml2 and xmlsec1.**
 
-*   **Add aliasing code to identify Miracle Linux by its former name of "asianux".**
-
-      The Asianux Linux distribution rebranded itself as Miracle Linux.  Since vSphere infrastructure recognizes "asianux" but not Miracle Linux, aliasing code was added to open-vm-tools to continue to identify Miracle Linux systems as "asianux".
+    The configure.ac and VGAuth code updated to avoid deprecated functions and build options based on OSS product version.
 
 ## <a id="knownissues" name="knownissues"></a>Known Issues
-
 
 *   **Shared Folders mount is unavailable on Linux VM.**
 

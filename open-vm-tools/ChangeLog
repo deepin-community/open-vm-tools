@@ -1,53 +1,1010 @@
-commit 619e61f96c0a82c0b3054122c81a62a29301bf1b
-Author: John Wolfe <jwolfe@vmware.com>
-Date:   Fri Mar 22 14:00:45 2024 -0700
-
-    Update the ReleaseNotes.md for the 12.4.0 open-vm-tools release.
-
-commit 6710ee5cd85d196fc8b16ce40f9e24444eed4e5a
-Author: John Wolfe <jwolfe@vmware.com>
-Date:   Fri Mar 22 13:53:03 2024 -0700
-
-    Correct build number strings in the build_number.h header file.
-    Synch the Broadcom copyright capitalization with that in official
-    source repo. - 4 files.
-
-commit 6d7499f9c5c9eeb8ae2288280e310d40a0d42a41
+commit 05afe0ae703d6027325059876528fe3b04fdf386
 Author: Kruti <kpendharkar@vmware.com>
-Date:   Thu Mar 21 13:00:23 2024 -0700
+Date:   Thu Oct 10 06:12:07 2024 -0700
 
-    Prepare for the open-vm-tools 12.4.0 release.
+    =================================================
+      open-vm-tools 12.5.0 released at this point.
+    =================================================
+    
+    Update of the ChangeLog with the final changes in preparation for
+    the open-vm-tools 12.5.0 release.
+
+commit ef2095ffda17a766a65bf39d61f4cdb9c735fa62
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Wed Oct 9 20:49:01 2024 -0700
+
+    Update the ReleaseNotes.md for the 12.5.0 open-vm-tools release.
+
+commit 96094bb1a59c67af99d31d5acfdc731f14109e47
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Wed Oct 9 19:47:45 2024 -0700
+
+    Prepare for the open-vm-tools 12.5.0 release.
     - Update the tools version in the configure.ac.
     - Update the build numbers in the buldNumber.h.
 
-commit 0056a21c3bb0d47da45792159dc17690bdda18a0
+commit 412a4b1db38627062a8ebb955b0d483edee0a1ff
 Author: Kruti <kpendharkar@vmware.com>
-Date:   Sun Mar 10 08:24:52 2024 -0700
+Date:   Thu Oct 3 23:34:31 2024 -0700
 
-    Update ChangeLog with the granular push of Mar 9, 2024.
-    - plus ChangeLog update of Feb 28, 2024.
+    Update ChangeLog with the granular push of Oct 03, 2024.
+    - plus copyright update
+    - plus ChangeLog update of Sep 24, 2024.
 
-commit 70b3a68f08914f8a0321e5e244434445ab6264b6
+commit e54a2d61657e3c4c0fd4299cc5c830b4263e27bd
 Author: Kruti <kpendharkar@vmware.com>
-Date:   Sat Mar 9 20:56:08 2024 -0800
+Date:   Thu Oct 3 23:17:34 2024 -0700
 
-    Change to common source file not applicable to open-vm-tools.
+    Correct missed 2024 copyright update.
 
-commit e8a1ee47e5c13611f1fec31a96d300c1aa5dd39c
+commit a2ff5f28720eca493c5369448b48d1ad595e368b
 Author: Kruti <kpendharkar@vmware.com>
-Date:   Sat Mar 9 20:56:08 2024 -0800
+Date:   Thu Oct 3 22:57:50 2024 -0700
+
+    open-vm-tools l10n message updates
+
+commit a240f6a1d75c4fbacb1e9364ff48dfce304a23dc
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Thu Oct 3 22:57:50 2024 -0700
+
+    Ignore deprecated warning for LIBXML2 APIs xmlFileXXX.
+    
+    CVE-2024-40896 has been fixed in the following libxml2 releases.
+      - 2.13.3
+      - 2.12.9
+      - 2.11.9
+    
+    The libxml2 version 2.13.0 has deprecated the xmlFileMatch, UserXmlFileOpen,
+    xmlFileRead, xmlFileClose callback functions. This change suppresses a
+    "deprecated-declaration" warning when these functions are invoked.
+
+commit a167dff31e77d9599454667220b23dac304fed46
+Author: John Wolfe <jwolfe@vmware.com>
+Date:   Tue Sep 24 14:31:17 2024 -0700
+
+    ====================================================================
+    The "stable-12.5.x" branch was created from the "devel" branch here.
+    ====================================================================
+    
+    Update the ChangeLog with the ChangeLog update of Aug 27, 2024.
+
+commit 764f00f3c3393e8043ba87c2b63d1df670755c95
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:31:46 2024 -0700
+
+    Update ChangeLog with the granular push of Aug 27, 2024.
+    - plus Copyright pattern update of file tools.conf
+    - plus README.md update of Aug 15, 2024.
+    - plus ChangeLog update of July 15, 2024.
+
+commit 25fe7db3739a021103b4dca64255531be02602cd
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:27:38 2024 -0700
+
+    Update copyright pattern for tools.conf.
+
+commit 21a843e74da24401049f40efeb313a858de53b07
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:11:00 2024 -0700
+
+    Change to common source files not applicable to open-vm-tools.
+
+commit 2197581c0da08a4a574703cf56eca39c90ad1a40
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:11:00 2024 -0700
 
     Change to common header file not applicable to open-vm-tools.
 
-commit 646fcb96b0dc9503824c62c1099f57fd3fb8845b
+commit 26ed84ded19e61801b752f3a606187ea2745e57a
 Author: Kruti <kpendharkar@vmware.com>
-Date:   Sat Mar 9 20:56:08 2024 -0800
+Date:   Tue Aug 27 02:11:00 2024 -0700
 
-    [GDP][GdpPlugin]: Subscriber presence interrogation (ZeroData).
+    Change to common header file not applicable to open-vm-tools.
+
+commit 5413628f892125da221bd180bfb861b3e773159c
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:11:00 2024 -0700
+
+    Annotate the os-release guest identification function HostinfoOsRelease()
+    
+    The HostinfoOsRelease() function examines the os-release standard file(s) to
+    collect distro identification data of interest. This is open-source and users
+    can legally modify the code changing the standard file priority order or
+    accessing other files. Any such change breaks compliance with the os-release
+    standard and may cause confusion in the field.
+    The function header has been updated to remind users of this issue.
+
+commit 86b308ab9eb8e4c3e154b30861cb66802c9e4624
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:11:00 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit c401bc0af27dd6928970cad4f6af5f22d48dc7a7
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:11:00 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 97a7efcc67eb37628181666a642a439cf4bc0bab
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:11:00 2024 -0700
+
+    Change to common source file not applicable to open-vm-tools.
+
+commit d9a88f25df7cab16374c7ed0c1bc2b4640df22c8
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:11:00 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 41d772c7ea21442f447872f52ec2fb7bd92d98b3
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:11:00 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 0a0b23a5080bf6ccb58c69b9b214e0c25c628173
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:11:00 2024 -0700
+
+    Change to common source files not applicable to open-vm-tools.
+
+commit 6e7206dbd9be10e1c0853a4ac8b9982e3d307a7e
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:11:00 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 159107b8027f122f8502adafbbc8ffc56b4ff7d7
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:10:59 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit bcc1be6f36d8a3d69c8a86f533d6deb27e6f2fda
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:10:59 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 649d27de9347ee507e3e863b43e861b48e5f0506
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:10:59 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 4bdc04df610cebde943967dc2042f90b6597d2ad
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:10:59 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit a5f761ab56eb7afbb885e4ec57062657cfe0f171
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue Aug 27 02:10:59 2024 -0700
+
+    Change to common source file not applicable to open-vm-tools.
+
+commit 582763347e3384a1fa1abb77a6b9c20d7c353753
+Author: Ravindra Kumar <ravindrakumar@vmware.com>
+Date:   Thu Aug 15 18:51:54 2024 -0700
+
+    Update README.md
+    
+    Updated open-vm-tools functionality and plugin details
+
+commit 88c4194d2c6fb1804159cd36dd7d68e984afc495
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 03:00:20 2024 -0700
+
+    Update ChangeLog with the granular push of July 15, 2024.
+    - plus ChangeLog update of May 28, 2024.
+
+commit 567b94a40a5fe8f478dfe37b3b87fc9106028e45
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:39 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 8ab40432f52747946fe007bf2bd2afc60875ee0a
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:38 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 4a8e42d35fcafb5d3ce77e5ea0e42887307172da
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:38 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 0ae5e008d7f18600d424e3335da54ee3e09f77bd
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:38 2024 -0700
+
+    Change to common source file not applicable to open-vm-tools at this time.
+
+commit 0e8e439e9fa4f1b196fd40251db0e948cde52ce5
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:38 2024 -0700
+
+    Change to common source files not applicable to open-vm-tools.
+
+commit c22f4ebfe44a1798c2b5c445ca49cb96d2a2385f
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:38 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 95ba5d3d67b94f9f30aab6665728c7145e432a55
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:38 2024 -0700
+
+    Change to common header files not applicable to open-vm-tools.
+
+commit 621013de8d6e98ccb9e45b69ed26ede7b460500e
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:38 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit b4c81e8fb510f6b978973975246d1bba78a2361a
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:38 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 2ecb5a9bedcc6ddd6a19dd3b24ca577e463c6257
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:38 2024 -0700
+
+    Change to common source files not applicable to open-vm-tools.
+
+commit 0d6b03ce9ee20260998dabef3fcc7b484d2935a5
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:37 2024 -0700
+
+    Change to common source files not applicable to open-vm-tools at this time.
+
+commit abe5c72317031ad2eceb21038cca2e67431a4a79
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:37 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 2ad2337e413d65eb88db85740d5515505db16d86
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:37 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit aa9d798ac82e84bfdf2bb9101c689338cbfb6dfe
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:37 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit add970dae8e60ce4a3c98c5fd6b7c7c7d5138066
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:37 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit e44d22a272e99890f04ed14a55ec53facaabf7fb
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:37 2024 -0700
+
+    Update vmware-user.desktop.in and delete vmware-user.desktop.
+    
+    Update settings for vmware-user.desktop.in:
+    - Remove Encoding since it's deprecated.
+    - Uncomment NoDisplay=True since the bug related to it was fixed
+    a while ago.
+    
+    Delete bora-vmsoft/install/common/vmware-user.desktop as it is no
+    longer needed. In open-vm-tools, vmware-user.desktop is generated from
+    vmware-user.desktop.in.
+    
+    Pull request: https://github.com/vmware/open-vm-tools/pull/668
+
+commit 879e7e7600d219e6be04baae3a0903802265be38
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:37 2024 -0700
+
+    Change to common source files not applicable to open-vm-tools.
+
+commit 5cb816ddf7b4278f4fe7574180a7b1fbf5693e08
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:37 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 3bf397e2a039772cdc62d6a7248a38388d4a58d2
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:37 2024 -0700
+
+    Change to common source files not applicable to open-vm-tools.
+
+commit e86e129392012521937a8439ab146e79515c5ff6
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:37 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 9bc336c8457ddf1bedb5c6ef8d2fde4b2d4a9d59
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Jul 15 02:56:36 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 515e38c175e0a642865c663334932b2247414d87
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue May 28 02:35:23 2024 -0700
+
+    Update ChangeLog with the granular push of May 26, 2024.
+    - plus Copyright pattern update of file x86_basic_defs.h
+    - plus ChangeLog update of May 20, 2024.
+
+commit fa9c8fb804f47536cddcdca1365b79477dccff88
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Tue May 28 02:00:20 2024 -0700
+
+    Update Copyright pattern.
+
+commit eedd5a4b61bfd2f54eaabffc2553cb9d7fcabbb5
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun May 26 23:55:32 2024 -0700
+
+    Change to common source files not applicable to open-vm-tools.
+
+commit 0d0b7bd3c8c2f63519c055236af843ecfd6d718f
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun May 26 23:55:32 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit bf2ac0396aedb12330050eeb63d0e3f2af65f847
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun May 26 23:55:32 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 5ab6868b2b993a18f3680416ad1257b4240c5f25
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun May 26 23:55:32 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit f026fcbdf5344d531954d049b05db12c3cf14429
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun May 26 23:55:32 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 8112f3d6d12a59d44f87776090643a2519b52f08
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 23:18:11 2024 -0700
+
+    Update ChangeLog with the granular push of May 20, 2024.
+    - plus Copyright update of file guestApp.c
+    - plus ChangeLog update of May 3, 2024.
+
+commit 9daa47c599c1fd85b60419b9375ef7d53d8d5c0f
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 23:10:14 2024 -0700
+
+    Correct copyright year to 2024.
+
+commit 8cd75607fbb7b5923f791c3cd8270d88b73fbef2
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:13 2024 -0700
+
+    [Coverity]: Fixes for issues found from static application security testing
+    
+    Adding coverity escapes for false-positive issues.
+    
+    hgfsServerParameters.c -- 1 issue reported.
+    issue: Overrunning array of 5 bytes at byte offset 5 by dereferencing
+           pointer "newName".
+    impact: False-Positive
+    fix: suppress 'overrun-local'
+    
+    vmhgfs-fuse/file.c -- 2 issues reported.
+    issue: Overrunning array of n bytes at byte offset n by dereferencing
+           pointer "newNameP" (n is 17 and 5 respectively for those 2 locations
+           where the issue occured).
+    impact: False-Positive
+    fix: suppress 'overrun-local'
+    
+    vmhgfs-fuse/link.c -- 2 issues reported.
+    issue: Overrunning array of n bytes at byte offset n by dereferencing
+           pointer "fileNameP" (n is 17 and 5 respectively for those 2 locations
+           where the issue occured).
+    impact: False-Positive
+    fix: suppress 'overrun-local'
+    
+    vmhgfs-fuse/transport.c -- 1 issue reported.
+    issue: uninit_use_in_call: Using uninitialized value "reply" while calling
+           HgfsCompleteReq() function.
+    impact: Bug
+    fix: Remove function, it is unused/dead code (transport.h too).
+
+commit b91770061d3000de3fbe0994480579d1c2ca62f8
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:13 2024 -0700
+
+    Change to common source file not applicable to open-vm-tools.
+
+commit 385e9b78195e96089353fbe2e945f069b245a831
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:13 2024 -0700
+
+    Maintain compatibility with libxml2.12.5 and later.
+
+commit 9364240246824f9a1daa591cc45af8a6714e046b
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:13 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit ebe97d7d8cb01e68826ada7766f0227d3c016508
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:13 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit ae0b62370b6ca926dbabe25bf5856c2a97cdcc5c
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:13 2024 -0700
+
+    Verify the xmlsec version before passing the compiler flag "-DXMLSEC_NO_SIZE_T",
+    as it has been deprecated since 1.3.3.
+    
+    The configure option "--enable-size-t" has been set to yes by default starting
+    with 1.3.0.
+    
+    version < 1.3.0 :
+      Add "-DXMLSEC_NO_SIZE_T" if size_t has a size other than 4 bytes.
+      (There was no enable-size-t before 1.2.35 and the enable-size-t is
+       "no" by default in [1.2.35, 1.3.0))
+    version >= 1.3.0 :
+      Do not add "-DXMLSEC_NO_SIZE_T" (as enable-size-t is "yes" by
+      default in version [1.3.0, 1.3.3) and no need to consider this
+      option since 1.3.3)
+
+commit 3fb8fe48f108067c39077934497df465616ba518
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:13 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit b841140771ae6218f8875574de78dac1dd19fd90
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 084e3f4c6911d8036d157ed4f96dbda94f705142
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 1dad197a3419d900e8e4a7e2549abf8586a8b885
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 6196b065644d325d6345db2a42f8778a0fcd9751
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Change to common source files not applicable to open-vm-tools.
+
+commit 42ceedd78f9ccb39540c4ea12f40fba7c644a050
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit b3b985137250d9b82bb22367a1ce1e424830c21d
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit b8fbf56a86b2d7e3d937fba9858add64d9792e8b
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Change to common source file not directly applicable to open-vm-tools.
+
+commit 33aa649c612d2a41f850ace726047fb5d6f70475
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Remove unused header files from the open-vm-tools source bundle.
+
+commit 2723eb37bad5d86683e67c6c6d09871da35e92e3
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Log customized error exit code from offspring processes.
+
+commit 0ffadd28557203cd0c994e48ccb442f1405a85c8
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit ec5f27caeb454cf1c4142a7e95f98b9d2e001b3d
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Fix copyright years.
+
+commit f9649775dafd0c2666f86357c1f72fb10e0d18c4
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    [Coverity]: UNINIT in resolutionSet finding from static application
+                security testing (SAST)
+    
+    resolutionSet.c -- 1 issue reported in the file
+    issue: capabilityArray not initialized or partially initialized when
+           reaching the statement.
+    impact: False-positive
+    fix: suppress 'uninit_use_in_call'
+    
+    VMTools_WrapArray converts the capabilityArray to a GArray.
+    The 'wrapped' array is allocated space for capabilityCount elements and
+    only the first capabilityCount elements are COPIED from capabilityArray
+    to the allocated GArray.  As such, the uninitialized elements of the
+    capabilityArray are never used to generate the returned GArray.  While
+    technically true (uninitialized) there is no reason to zero the array
+    indexes from capabilityCount through to the end of the array as these
+    elements are unused.
+
+commit b437f6f4ae99b540820cb66dabc716eb43c5c71a
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 31894dfbfcd91efe5a2712c2f33ce9114d942e11
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Fix LOCK_EVASION issue found by Coverity scan.
+    
+    fileLogger.c -- 2 issues reported in file
+    issue: MultiReader/SingleWriter lock race conditions between assign and
+           check.
+    fix: Mitigation more than fix.
+    
+    issue: Coverity seems confused by the MR/SW lock, but there is some data
+           field assignment performed under the wrong lock to clean up.
+           fix: Move assignment made under Read lock to Write lock.
+    
+    Moved setting the data->error status inside of writer lock block.
+    
+    Added re-checking the data->error status at reader -> writer and
+    writer -> reader lock transitions.
+
+commit 52596dea1e33e40ad8f518d445b53d7f0a4f34f1
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon May 20 22:58:12 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 9e85a0c132b8aa01e27bf958b61a802602352311
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:27:03 2024 -0700
+
+    Update ChangeLog with the granular push of May 3, 2024.
+    - plus Copyright modification of files vmxnet3_defs.h and
+      get-connection-info.sh.
+    - plus ChangeLog update of Apr 7, 2024.
+
+commit a0ffd2a0bf2a1f22cce695adad374628c832555c
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:15:25 2024 -0700
+
+    Copyright update.
+
+commit 550b331d8c9b738065ea4c99daa07dcd1ab9235d
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:45 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 3abed5b9e3060208a02dd404749a3683b5aec79b
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:45 2024 -0700
+
+    ProcManagerPosix.c:  Direct child process's logs to stdio.
+    
+    Mutexes in lib/libvmtools/vmtoolsLog.c and glib could have been locked
+    at fork time.  The vmtoolsLog.c Debug(), Warning() and Panic()functions
+    are not safe for child processes.
+     - Direct the offspring process's logs to stdio.
+     - Terminate the offspring process with _exit() or abort().
+
+commit 12f3303f0559e74724b0656d192d32bd54957350
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:45 2024 -0700
+
+    Fix the Y2K38_SAFETY finding found by Coverity scan.
+    
+    Change the date type to 'long long' to make the size be 64 bits,
+    same as that of time_t.
+
+commit f9aaf02fd8c3e928bc1706fc9c692a6190a03a23
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:45 2024 -0700
+
+    Service Discovery data collection duration takes > 70 minutes when
+    monitoring large setups.
+    
+    The issue happens on vrops node VMs that are part of large clusters
+    because these kind of nodes typically have a large amount of tcp/udp
+    connections.  The root cause of the issue is an enormous number of
+    spaces generated by "ss -antup | grep -E $pattern" command in
+    get-connection-info.sh. The SDMP plugin considers these spaces while
+    calculating the chunk size for writing into NDB and writing about 200-400
+    chunks for the get-connection-info key.  Processing of this amount of
+    data slows down the discovery process on both the adapter and plugin sides
+    and, as a result, the discovery exceeds the timing limit and fails.
+    
+    The solution is to remove unnecessary spaces from the end of the
+    get-connection-info output lines.
+
+commit fa6d75da8c15c7fb3a696839c9f4aa7b43344d31
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:45 2024 -0700
+
+    Change to common source file not applicable to open-vm-tools at this time.
+
+commit 5681e42c30f9a8875abfcdecb8c12ee8c51416f1
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:45 2024 -0700
+
+    Record the use of version 12.4.5 in the vm_tools_version.h header
+
+commit 200fa56ef5f0097df888c34e24cb52c9c947d287
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:45 2024 -0700
+
+    Fixes for issues found in Coverity scan.
+    
+    vgauth/serviceImpl/saml-xmlsec1.c
+    issue: 'string_null' for strlen(pemCert)
+    impact: False-positive
+    fix: suppress 'string_null'
+    issue: leaked_storage: certChain is not cleaned up on error.
+    impact: Memory is leaked on the error path.
+    fix: Add line before return to free certChain.
+    
+    vgauth/common/i18n.c
+    issue: 'leaked_storage' for "name" variable
+    impact: False-positive
+    fix: suppress 'leaked_storage'
+    
+    lib/file/file.c
+    issue: use_after_free for 'src' pointer
+    impact: False-positive
+    fix: suppress 'use_after_free'
+    
+    services/plugins/serviceDiscovery/serviceDiscovery.c
+    issue: overrun-local: gdpErrMsgs array contains one less entry then there are
+           enum defined.
+    impact: Valid but the function never return the GDP_ERR_MAX enum.
+    fix: in gdp.h, add an error entry for GDP_ERR_MAX this way gdpErrMsgs will
+    generate all entries.
+    
+    lib/file/fileLockPosix.c
+    issue: string_null for 'buffer' not being null terminated.
+    impact: False-positive
+    fix: suppress 'string_null'
+
+commit 1963bfed9f388aa57c9a8fc5d0f17424c76cbe60
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:45 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 1d19761e81b9a601b6fdb10109c92331f0b11eef
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:45 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 5c10fab774d061230e8e747569d918272b182366
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:45 2024 -0700
+
+    Fix the SHELLCHECK_WARNING findings from static application security testing
+    (SAST)
+    
+    install/Linux/scripts/network: Multiple shellcheck issues found in the
+    Linux "network" script with the warning "Remove backticks to avoid
+    executing output (or use eval if intentional)."
+    
+    Removed the backticks from those corresponding lines of the script.
+
+commit b892d59578b2a3d65f473d6f597df2f3c95997bf
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:45 2024 -0700
+
+    [Coverity]: Fix the Y2K38_SAFETY findings from static application security
+    testing (SAST)
+    
+    guestInfoServer.c -- 2 issues reported in file
+    issue: casting time_t (64bits) to int (32bits) causing Y2K38_SAFETY.
+    impact: delta is a time delta in seconds, overflow if delta >=
+    (G_MAXINT/1000)+1
+    fix: Remove cast on delta, cast both values as int64.
+    
+    issue: casting time_t to int for logging to a '%d'.
+    impact: delta is a time delta in seconds, not expected to overflow a 32 bit
+    int.
+    fix: Remove cast on delta, change string to use '%"FMT64"d' format and cast
+    the time_t to int64; time_t is defined as 'long int'.
+    
+    vixTools.c -- 7 issues reported in file
+    issue: casting time_t to int for convertion to string (xml)
+    impact: procStartTime is a time from epoch, it will overflow the int in Y2K38.
+    fix: Remove the cast, change the string to use '%"FMT64"d"' and cast the
+    time_t to int64; time_t is defined as 'long int'.
+    
+    issues: casting time_t to int in call to VixToolsPrintProcInfoEx.
+    impact: The times used are time from epoch and will be impacted by Y2K38.
+    fix: Change signature of VixToolsPrintProcInfoEx to take in time_t types.
+    Change VixToolsPrintProcInfoEx to use '%"FMT64"d' in string conversions.
+    and cast the time_t to int64; time_t is defined as 'long int'.
+
+commit ae31ed20bfbf0e744701f60b7839f88aa73ae554
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:44 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit ffd52c7e4010098893a34c66b6d70b500d98711e
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:44 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 1b3e41d24086fed921982674daa89f70d3bd677e
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:44 2024 -0700
+
+    Style correction in Broadcom copyright.
+
+commit 8336d5d8ace540b356813c197794d5f14f2ae38b
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:44 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit e2d1f8c418c72f21f0ef44a83262d19e0f68185e
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:44 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit c48b6ac791d13313db4cb023b275bb6df90c565a
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:44 2024 -0700
+
+    Change to common source files not applicable to open-vm-tools.
+
+commit 98e9e31448b81ff4ba8f4ec29c893957aa9d07aa
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:44 2024 -0700
+
+    Stop the glib based logging to avoid nested logging from RpcChannel error.
+
+commit 7f68542609c84b573b0faee31acd4aa5dfffc94b
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Fri May 3 09:05:44 2024 -0700
+
+    GuestOS: Explicitly identify Flatcar Linux
+    
+    We support a VMX guestOS string for Flatcar Linux ("flatcar-64").
+    Update the guest identification code to report Flatcar, rather than
+    generically (other linux <n> - 64).
+
+commit 831d35dfed2fc94eb8dfa61cf16cfc7b9d1a2a36
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun Apr 7 23:49:24 2024 -0700
+
+    Update ChangeLog with the granular push of Apr 7, 2024.
+    - Plus ChangeLog update Mar 18, 2024.
+
+commit 9026382b617114a4ea10593be3358d4f5470160a
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun Apr 7 23:26:32 2024 -0700
+
+    Update NetworkManager calls in suspend/resume scripts.
+    
+    Revise the NetworkManager calls in the Linux network script to
+    prefer using the Sleep method over the "Enable" method being used
+    to work around a bug in version 0.9.0.
+    
+    Pull request: https://github.com/vmware/open-vm-tools/pull/699
+    Issue: https://github.com/vmware/open-vm-tools/issues/426
+
+commit 76177671b4dbe6795b30d7282750daa6bc44c3ce
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun Apr 7 23:26:32 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 160a2f6464f1f8a391e20445436aac828747944b
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun Apr 7 23:26:32 2024 -0700
+
+    Change to common source file not applicable to open-vm-tools.
+
+commit 16b2942637b4b4c8613c97910b0c926aa78f118e
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun Apr 7 23:26:32 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit a27e36f708ba532610bc80aa05c6f646aff2e221
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun Apr 7 23:26:32 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit d00cb18b872419d1fc9dba12d82a33249c9f8381
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun Apr 7 23:26:32 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit dc2afa499e80d09f198d056b9f65b34054934eb9
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun Apr 7 23:26:31 2024 -0700
+
+    Linux network log file permissions fix: 0644 to 0600
+    Since release 11.3.5, on linux guests, the vmware-network.log file has root
+    default	file creation permissions (0644) rather than the expected 0600
+    permissions.
+    
+    Fix:
+    - Adding chmod 0600 on log file creation.
+    - Adding file creation before first logging.
+    - Adding handling of unset handler in case switch, default to file logging.
+    - Adding logging of unknown or bad handler, and using file logging as default.
+    - Default number of logfiles when network.maxOldLogFiles is set to 0.
+
+commit 98d046ba12d3eb3e34ec2cf5752a9c35721946ba
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun Apr 7 23:26:31 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit ef456ec9073f2f223e56117077fd2555a3e3d4c1
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun Apr 7 23:26:31 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 9523e770f58e440e7359b3e495f2fe6b03da3447
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Sun Apr 7 23:26:31 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit a02c7f8de02dd3108a5ebdd6158dfc9366051409
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:42:23 2024 -0700
+
+    Update ChangeLog with the granular push of Mar 18, 2024.
+    - plus Copyright update of file vmxnet3_defs.h
+    - plus ChangeLog update of Feb 28, 2024.
+
+commit c2056a39e9bf4fc91cd457c4ef12c29a3e9af3a7
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:30:49 2024 -0700
+
+    Correct copyright year to 2024.
+
+commit f510b78fe043392325ba0cede8066994baaa8276
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:49 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit acfd8ab650f10759b09a93f8adde71459a131392
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:49 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 3ad15e4e776738b993c8c2da8119f0c1a7bf0a91
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 652a17c1d06a0ced2fceecde700ad93623d311b6
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 9adc1653c0d40aef5e27e415bfa7cc111bda31bd
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 7884ab85eebacf7c864e1eecab600b94dc9dd844
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit d27143ceb08381f644fc93d8b685965685f87f1a
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 51036fade754381b95821d54ec5e01dd56bbd5dd
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit ad34c945344422fac091d7e7d5c1869edf4b0cdf
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit 96d97fdf1031b1c71656c7089e0ecfb7390af2eb
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit fc9c9503ee2d4a1a18aed73d001ef6340491d302
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    [GDP][GdpPlugin] Subscriber presence interrogation (ZeroData).
     
     This change allows empty/0 byte payload to be sent from GDP Plugin on guest
     to the gdp daemon on host when querying for subscriber presence,
     without publishing the data to the subscribers.
+
+commit 66fb7a4816661670889d3f6f6cb74895cfb8c6fe
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    Change to common header file not applicable to open-vm-tools.
+
+commit e3ca1f9beea77e7423c1c21d8f698b18d4ebe942
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    Change to common source file not applicable to open-vm-tools.
+
+commit 0eeef953ab3034bfd7034b5db7c064c9b287b791
+Author: Kruti <kpendharkar@vmware.com>
+Date:   Mon Mar 18 11:03:48 2024 -0700
+
+    Bump the VMware Tools version to 12.5.0 on "devel" branch.
+    
+    Ear-marked "SOCKET_WRENCH" as the tools tag for the 12.4.x series of
+    releases.
 
 commit 11647ac4a337e7b768c98b3753acd4e814e58939
 Author: Kruti <kpendharkar@vmware.com>

@@ -1,5 +1,6 @@
 /*********************************************************
- * Copyright (c) 2016-2023 VMware, Inc. All rights reserved.
+ * Copyright (c) 2016-2024 Broadcom. All rights reserved.
+ * The term "Broadcom" refers to Broadcom Inc. and/or its subsidiaries.
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -33,6 +34,22 @@
 #include <libxml/xmlschemas.h>
 #include <libxml/xmlIO.h>
 #include <libxml/uri.h>
+
+// PR 3416639, xmlFile* APIs were deprecated in libxml2 2.13.0
+// Ignore the deprecated warnings after updating libxml2 to 2.13.3
+// ToDo: Define the deprecated APIs locally and remove the
+// XML_IGNORE_DEPRECATION_WARNINGS
+#ifdef _WIN32
+#define XML_IGNORE_DEPRECATION_WARNINGS \
+    __pragma(warning(push)) \
+    __pragma(warning(disable : 4996))
+#define XML_POP_WARNINGS __pragma(warning(pop))
+#else
+#define XML_IGNORE_DEPRECATION_WARNINGS \
+    _Pragma("GCC diagnostic push") \
+    _Pragma("GCC diagnostic ignored \"-Wdeprecated-declarations\"")
+#define XML_POP_WARNINGS _Pragma("GCC diagnostic pop")
+#endif
 
 #include <xmlsec/xmlsec.h>
 #include <xmlsec/xmltree.h>
@@ -119,7 +136,9 @@ UserXmlFileOpen(const char *filename)
    unescaped = xmlURIUnescapeString(filename, 0, NULL);
    if (unescaped != NULL) {
       g_debug("%s: Opening file \"%s\"\n", __FUNCTION__, unescaped);
+XML_IGNORE_DEPRECATION_WARNINGS
       retval = xmlFileOpen(unescaped);
+XML_POP_WARNINGS
       xmlFree(unescaped);
    }
 
@@ -431,22 +450,16 @@ SAML_Init(void)
     */
    LIBXML_TEST_VERSION
 
-   /*
-    * Tell libxml to do ID/REF lookups
-    * Tell libxml to complete attributes with defaults from the DTDs
-    */
-   xmlLoadExtDtdDefaultValue = XML_DETECT_IDS | XML_COMPLETE_ATTRS;
-   xmlSubstituteEntitiesDefault(1);
-
-
    /* set up the xml2 error handler */
    xmlSetGenericErrorFunc(NULL, XmlErrorHandler);
 
    /*
     * Register user defined UserXmlFileOpen
     */
+XML_IGNORE_DEPRECATION_WARNINGS
    xmlRegisterInputCallbacks(xmlFileMatch, UserXmlFileOpen,
                              xmlFileRead, xmlFileClose);
+XML_POP_WARNINGS
 
    /*
     * Load schemas
@@ -1222,6 +1235,7 @@ BuildCertChain(xmlNodePtr x509Node,
       /*
        * Add cert to the keymanager.
        */
+      /* coverity[string_null] */
       ret = xmlSecCryptoAppKeysMngrCertLoadMemory(mgr,
                                                   pemCert,
                                                   (xmlSecSize) strlen(pemCert),
@@ -1422,9 +1436,10 @@ VerifySignature(xmlDocPtr doc,
     * dsigCtx->status can be at the wrong offset.  So
     * dump the value of status, which should be either
     * 1 (xmlSecDSigStatusSucceeded) or 2 (xmlSecDSigStatusInvalid).
-    * If its something else, that's a sign there's a
-    * build issue and XMLSEC_NO_SIZE_T may be set at one layer but
-    * not the other.
+    * If its something else, that could be a sign that there's a build issue
+    * and that libxmlsec1 is using a different size type than its callers.
+    * Please see xmlSecSize changelog in
+    * https://www.aleksey.com/xmlsec/news.html
     *
     */
    if (dsigCtx->status != xmlSecDSigStatusSucceeded) {
@@ -1521,7 +1536,13 @@ VerifySAMLToken(const gchar *token,
                            strlen(token),
                            NULL, NULL, 0);
 #else
-   doc = xmlParseMemory(token, (int)strlen(token));
+   /*
+    * Tell libxml to substitute the entities (XML_PARSE_NOENT).
+    * Tell libxml to load the external DTD (XML_PARSE_DTDLOAD).
+    * Tell libxml to add default attributes from the DTD (XML_PARSE_DTDATTR).
+    */
+   doc = xmlReadMemory(token, (int)strlen(token), NULL, NULL,
+                       XML_PARSE_NOENT | XML_PARSE_DTDATTR | XML_PARSE_DTDLOAD);
 #endif
    if ((NULL == doc) || (xmlDocGetRootElement(doc) == NULL)) {
       g_warning("Failed to parse document\n");
@@ -1734,6 +1755,7 @@ SAML_VerifyBearerTokenAndChain(const char *xmlText,
       if (err != VGAUTH_E_OK) {
          VMXLog_Log(VMXLOG_LEVEL_WARNING,
                     "Unrelated certs found in SAML token, failing\n");
+         FreeCertArray(num, certChain);
          return VGAUTH_E_AUTHENTICATION_DENIED;
       }
    }
